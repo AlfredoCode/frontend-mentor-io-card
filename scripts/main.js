@@ -30,8 +30,10 @@ num_input.addEventListener("input", function (event) {
 
     event.target.value = text.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
 
-    console.log(text)
-    console.log(event)
+
+    // DEBUG
+    // console.log(text)
+    // console.log(event)
 
 })
 
@@ -59,5 +61,47 @@ num_input.addEventListener("change", function (event) {
 
 })
 
+
+
+
+const name_input = document.querySelector('#input-card-name')
+name_input.maxLength = 22
+name_input.addEventListener("input", function(event){
+    let text = event.target.value
+    let prev = document.querySelector(".card-name-prev-span")
+    
+    prev.innerHTML = text
+    
+    // DEBUG    
+    // console.log(text)
+})
+
+name_input.addEventListener("change", function(event){
+    let text = event.target.value
+    let len = text.length
+    let prev = document.querySelector(".card-name-prev-span")
+    
+
+    if(len == 0){
+        prev.innerHTML = "Jane Appleseed"
+    }
+})
+
+
+
+const cvc_input = document.querySelector('#input-card-cvc')
+cvc_input.maxLength = 3
+cvc_input.addEventListener("input", function(event){
+    let text = event.target.value
+    let prev = document.querySelector(".card-cvc-prev-span")
+    let len = text.length
+    let user_text = text + ('0'.repeat(cvc_input.maxLength - len))
+
+
+    prev.innerHTML = user_text
+    
+    // DEBUG    
+    // console.log(text)
+})
 
 
